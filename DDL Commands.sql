@@ -20,8 +20,9 @@ deptLocation varchar(20)
 --It is used for deleting the complete table.
 drop table empTable;
 
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'ankit')
-BEGIN
-    CREATE DATABASE ankit;
-END;
+--Use of alter command for the updation of structure of the table
+alter table empTable alter column phone varchar(20);   -- alter column is used to update the datatype of the column.
 
+exec sp_columns 'empTable';    -- sp_columns is used to describe the table structure.
+
+truncate table empTable;     -- it is used to delete the complete data of the data without affecting the table structure.
